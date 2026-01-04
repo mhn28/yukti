@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yukti"
+version = "0.0.1"
+description = "Yukti: reasoned statistical inference platform"
+authors = [{name = "Mohin"}]
+requires-python = ">=3.9"
