@@ -2,20 +2,12 @@
 import pandas as pd
 import statsmodels.formula.api as smf
 
-def linear_mixed_model(data: pd.DataFrame, formula: str, group: str):
-    """
-    Explicit linear mixed-effects model.
-    Example formula: 'y ~ x1 + x2'
-    group: random effect grouping variable
-    """
-    model = smf.mixedlm(formula, data, groups=data[group])
-    result = model.fit()
+def mixed_intercept(df, response, predictor, group):
+    formula = f"{response} ~ {predictor}"
+    model = smf.mixedlm(formula, df, groups=df[group])
+    fit = model.fit(reml=False)
     return {
-        "model": "LMM",
-        "formula": formula,
-        "group": group,
-        "params": result.params.to_dict(),
-        "pvalues": result.pvalues.to_dict(),
-        "aic": float(result.aic),
-        "bic": float(result.bic)
+        "fixed_effects": fit.params.to_dict(),
+        "random_effects_var": float(fit.cov_re.iloc[0,0]),
+        "log_likelihood": float(fit.llf)
     }

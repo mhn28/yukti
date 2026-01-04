@@ -1,25 +1,24 @@
 
-import numpy as np
-import pandas as pd
-from yukti.stats.mixed_effects import linear_mixed_model
+import numpy as np, pandas as pd
+from yukti.stats.mixed_effects import mixed_intercept
 
-np.random.seed(0)
+np.random.seed(42)
+
+# Simulated clustered data
+groups = np.repeat(np.arange(10), 10)
+x = np.random.normal(0, 1, 100)
+group_effect = np.repeat(np.random.normal(0, 1, 10), 10)
+y = 1.5 * x + group_effect + np.random.normal(0, 0.5, 100)
 
 df = pd.DataFrame({
-    "subject": np.repeat(range(10), 5),
-    "time": list(range(5)) * 10,
-    "treatment": np.random.choice([0,1], 50),
-    "y": np.random.normal(0, 1, 50)
+    "y": y,
+    "x": x,
+    "group": groups
 })
 
-res = linear_mixed_model(
-    data=df,
-    formula="y ~ time + treatment",
-    group="subject"
-)
+res = mixed_intercept(df, "y", "x", "group")
 
-assert res["model"] == "LMM"
-assert "time" in res["params"]
-assert isinstance(res["aic"], float)
+assert abs(res["fixed_effects"]["x"] - 1.5) < 0.3
+assert res["random_effects_var"] > 0
 
-print("✓ Phase 3 mixed-effects model validated")
+print("✓ Phase 6 mixed-effects (random intercept) validated")
