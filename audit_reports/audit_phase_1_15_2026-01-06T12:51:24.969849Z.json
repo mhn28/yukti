@@ -1,0 +1,51 @@
+{
+  "audit": "Phase 1\u201315",
+  "timestamp_utc": "2026-01-06T12:51:24.969849Z",
+  "results": {
+    "phase_1": {
+      "yukti.stats.tests_core": "PASS"
+    },
+    "phase_2": {
+      "yukti.stats.multiple_testing": "PASS"
+    },
+    "phase_3": {
+      "yukti.stats.effect_sizes": "PASS"
+    },
+    "phase_4": {
+      "yukti.stats.survival": "PASS"
+    },
+    "phase_5": {
+      "yukti.stats.bayesian": "FAIL: No module named 'yukti.stats.bayesian'"
+    },
+    "phase_6": {
+      "yukti.stats.mixed_effects": "PASS"
+    },
+    "phase_7": {
+      "yukti.stats.permanova": "PASS"
+    },
+    "phase_8": {
+      "yukti.stats.multiomics_factors": "PASS"
+    },
+    "phase_9": {
+      "yukti.causal": "PASS"
+    },
+    "phase_10": {
+      "yukti.benchmarks": "PASS"
+    },
+    "phase_11": {
+      "yukti.causal.dag": "PASS"
+    },
+    "phase_12": {
+      "yukti.spatial.core": "PASS"
+    },
+    "phase_13": {
+      "yukti.spatial.plots": "PASS"
+    },
+    "phase_14": {
+      "yukti.spatial.lisa": "PASS"
+    },
+    "phase_15": {
+      "yukti.spatial.temporal": "PASS"
+    }
+  }
+}
