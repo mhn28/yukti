@@ -1,4 +1,28 @@
+# Virtual environments
+.venv/
 venv/
+
+# Models and binaries
+models/
+*.gguf
+llama.cpp/
+build/
+
+# Reports and generated outputs
+audit_reports/
+benchmark_reports/
+phase_*.png
+phase_*_outputs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Lock files
+requirements.lock.txtvenv/
 __pycache__/
 *.pyc
 .DS_Store

@@ -1,0 +1,27 @@
+#JSGF V1.0;
+grammar statistics;
+
+public <query> =
+    (what is | explain | describe | compare | when to use)
+    (<test> | <concept>)
+;
+
+<test> =
+    shapiro wilk test |
+    bonferroni correction |
+    t test |
+    anova |
+    chi square test |
+    mann whitney test |
+    wilcoxon test |
+    kolmogorov smirnov test
+;
+
+<concept> =
+    normal distribution |
+    p value |
+    confidence interval |
+    multiple testing |
+    type one error |
+    type two error
+;
