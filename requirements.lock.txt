@@ -1,0 +1,6 @@
+numpy==2.3.5
+numba>=0.63,<0.64
+vosk>=0.3.44
+sounddevice>=0.5
+scipy
+scikit-learn
