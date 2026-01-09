@@ -1,0 +1,11 @@
+{
+  "yukti.annotations.builder.build_effect_annotation": "e3cea23c473296a7e3f1b33391913b720af1efa8262d59d0b466aed2e4f45138",
+  "yukti.annotations.builder.build_p_annotation": "bb3c7a03af3080a0d0a7645626e42188f6732a9cff37ef3c068ac9d6e0a0013a",
+  "yukti.figures.render.render_figure": "72b0365440c786e030ebfbbde78e5950101c5dbef94d22fd2be41d3fe20eacb3",
+  "yukti.plots.plot_2d.plot_2d_with_annotations": "9aafe719c8dbed8701ac31204e4d97dda91ace41e1656a7969b3966d4aa42eca",
+  "yukti.provenance.binding.ProvenanceBinding": "2619d1bac782d1401ab22de5e32cd899434a62e1a70be22254cbfcf30b7d9258",
+  "yukti.provenance.citation.Citation": "73b0a741f4124a0d55fdeb95e84de01f10e2e6939a50b3ba0f561b4762ba80d2",
+  "yukti.provenance.dataset.DatasetProvenance": "e76016fd40c79a9bbdb09d72999473400d860af86734b30386355ad2f71b5c26",
+  "yukti.provenance.guards.enforce_provenance": "bcd584cad248004dcbed00dd515a2af12a14b4650c5253bed6d7e206fc09bbdc",
+  "yukti.reporting.captions.generate_caption": "ad00cc5c0692238501ffe9ee1469543ee2e7be3e4e0ab92bd789d2ac43419b43"
+}
