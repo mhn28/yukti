@@ -1,20 +1,22 @@
 import matplotlib.pyplot as plt
 
-def plot_4d_trajectory(coords, time, annotations, out):
+def plot_2d_with_annotations(x, y, annotations, title, out):
     fig, ax = plt.subplots(figsize=(5,4))
-    sc = ax.scatter(coords[:,0], coords[:,1], c=time, cmap="viridis")
-    plt.colorbar(sc, ax=ax, label="Time")
+    ax.scatter(x, y, s=40)
 
     for i, ann in enumerate(annotations):
+        txt = f"p={ann['p']} {ann['significance']}, {ann['label']}={ann['value']}"
         ax.text(
             0.05, 0.95 - i*0.08,
-            f"p={ann['p']} {ann['significance']}, {ann['label']}={ann['value']}",
+            txt,
             transform=ax.transAxes,
             fontsize=10,
             verticalalignment='top'
         )
 
-    ax.set_title("4D trajectory (space + time)")
+    ax.set_title(title)
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
     plt.tight_layout()
     plt.savefig(out, dpi=300)
     plt.close()
