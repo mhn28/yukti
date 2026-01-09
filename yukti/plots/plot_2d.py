@@ -1,22 +1,55 @@
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-def plot_2d_with_annotations(x, y, annotations, title, out):
-    fig, ax = plt.subplots(figsize=(5,4))
-    ax.scatter(x, y, s=40)
+def plot_2d_with_annotations(
+    data: dict,
+    groups: list,
+    annotations: dict,
+    title: str,
+    ylabel: str,
+    out: str
+):
+    """
+    data: {group_name: list of values}
+    annotations: {
+        "p": float,
+        "stars": str,
+        "effect": str
+    }
+    """
+    fig, ax = plt.subplots(figsize=(6, 5))
 
-    for i, ann in enumerate(annotations):
-        txt = f"p={ann['p']} {ann['significance']}, {ann['label']}={ann['value']}"
-        ax.text(
-            0.05, 0.95 - i*0.08,
-            txt,
-            transform=ax.transAxes,
-            fontsize=10,
-            verticalalignment='top'
-        )
+    values = [data[g] for g in groups]
+    ax.boxplot(values, labels=groups, patch_artist=True)
 
     ax.set_title(title)
-    ax.set_xlabel("X")
-    ax.set_ylabel("Y")
+    ax.set_ylabel(ylabel)
+
+    # ---- statistical annotation ----
+    ymax = max(max(v) for v in values)
+    y = ymax * 1.1
+    ax.plot([1, 2], [y, y], c="black")
+    ax.text(
+        1.5,
+        y * 1.02,
+        f"{annotations['stars']}  p={annotations['p']:.3e}",
+        ha="center",
+        va="bottom",
+        fontsize=11
+    )
+
+    # ---- effect size ----
+    ax.text(
+        0.02,
+        0.95,
+        annotations["effect"],
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=10
+    )
+
     plt.tight_layout()
     plt.savefig(out, dpi=300)
     plt.close()
