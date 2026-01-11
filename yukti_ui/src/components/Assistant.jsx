@@ -1,25 +1,31 @@
-import { invoke } from "@tauri-apps/api/core";
 import { useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 
 export default function Assistant() {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
+  const [out, setOut] = useState("Idle");
 
   const send = async () => {
-    const response = await invoke("run_assistant", { query: input });
-    setOutput(response);
+    console.log("BUTTON CLICKED");
+
+    try {
+      const result = await invoke("run_assistant", {
+        payload: JSON.stringify({
+          action: "power_analysis",
+          params: { alpha: 0.05, power: 0.8 }
+        })
+      });
+      setOut(result);
+    } catch (e) {
+      console.error("Invoke error:", e);
+      setOut(String(e));
+    }
   };
 
   return (
-    <div style={{ padding: "16px", color: "#00ff88" }}>
-      <h3>Assistant</h3>
-      <textarea
-        style={{ width: "100%", height: "80px" }}
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={send}>Send</button>
-      <pre>{output}</pre>
+    <div style={{ width: "420px", background: "#0b0f14", color: "#00ffcc", padding: "16px" }}>
+      <h3>Yukti Assistant</h3>
+      <button onClick={send}>Run Power Analysis</button>
+      <pre>{out}</pre>
     </div>
   );
 }
