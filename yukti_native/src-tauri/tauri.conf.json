@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "identifier": "com.yukti.science",
+  "productName": "Yukti",
+  "version": "0.1.0",
+
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devUrl": "http://localhost:5173",
+    "frontendDist": "../yukti_ui/dist"
+  },
+
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Yukti — Scientific Intelligence Interface",
+        "width": 1400,
+        "height": 900,
+        "resizable": true
+      }
+    ]
+  }
+}
